@@ -1,0 +1,29 @@
+<h3>{{ heading_title }}</h3>
+      <div class="row"> {% for product in products %}
+          <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          <div class="product-thumb">
+            <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+            <div>
+              <div class="caption">
+                <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+                <div class="price-button">
+                    <div class="product-price">
+                        {% if product.price %}
+                        {% if not product.special %}
+                          <span class="price">{{ product.price }}</span>
+                          {% else %} <span class="price-old">{{ product.price }}</span> <span class="price">{{ product.special }}</span>  {% endif %}
+                          {% if product.tax %} <span class="price-tax">{{ text_tax }} {{ product.tax }}</span> {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="product-button">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');">{{ button_cart }}</button>
+                    </div>
+                </div>
+                <div class="button-cw">
+                    <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        {% endfor %} </div>
