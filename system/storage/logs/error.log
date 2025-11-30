@@ -8,3 +8,11 @@
 2025-11-30 20:28:07 - PHP Warning:  A non-numeric value encountered in C:\OpenServer\domains\store.loc\system\storage\cache\template\6d\6da25de7844fc9b2b202ac89e37c853f328627ef736a9bf26379cc2104a3aef9.php on line 252
 2025-11-30 20:28:12 - PHP Warning:  A non-numeric value encountered in C:\OpenServer\domains\store.loc\system\storage\cache\template\6d\6da25de7844fc9b2b202ac89e37c853f328627ef736a9bf26379cc2104a3aef9.php on line 252
 2025-11-30 20:28:13 - PHP Warning:  A non-numeric value encountered in C:\OpenServer\domains\store.loc\system\storage\cache\template\6d\6da25de7844fc9b2b202ac89e37c853f328627ef736a9bf26379cc2104a3aef9.php on line 252
+2025-11-30 22:04:36 - PHP Warning:  fopen(C:/OpenServer/domains/store.loc/system/storage/cache/cache.article.total.1.0.1.510df4f199151ec834717e7a6f19f35a.1764543876): failed to open stream: No such file or directory in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 28
+2025-11-30 22:04:36 - PHP Warning:  flock() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 30
+2025-11-30 22:04:36 - PHP Warning:  fread() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 35
+2025-11-30 22:04:36 - PHP Warning:  flock() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 40
+2025-11-30 22:04:36 - PHP Warning:  fread() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 35
+2025-11-30 22:04:36 - PHP Warning:  fclose() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 42
+2025-11-30 22:04:36 - PHP Warning:  flock() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 40
+2025-11-30 22:04:36 - PHP Warning:  fclose() expects parameter 1 to be resource, bool given in C:\OpenServer\domains\store.loc\system\library\cache\file.php on line 42

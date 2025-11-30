@@ -195,9 +195,9 @@ div.required .control-label:before {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     transform: translateY(-8px);
 }
-
-
-
+header{
+    padding-top: 15px;
+}
 
 
 @media (max-width: 478px) {
