@@ -21,7 +21,7 @@
         {% endif %}
         <div class="{{ class }}"> {% if thumb or images %}
         <div class="product-image">
-           <div class="button-cw"><button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button></div>
+{#           <div class="button-cw"><button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button></div>#}
           <ul class="thumbnails">
             {% if thumb %}
             <li><a class="thumbnail" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
@@ -340,10 +340,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="button-cw">
-                <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
-                </div>
-                </div>    
+{#                <div class="button-cw">#}
+{#                <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>#}
+{#                </div>#}
+{#                </div>    #}
         </div>
         {% if column_left and column_right and (i + 1) % 2 == 0 %}
         <div class="clearfix visible-md visible-sm"></div>

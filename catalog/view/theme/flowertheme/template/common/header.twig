@@ -50,47 +50,6 @@
 {% endfor %}
 </head>
 <body>
-<nav id="top">
-  <div class="container">
-  <div class="top-links nav pull-left">
-    <ul class="list-inline">
-    <li>
-		<div class="logo hidden-sm hidden-md hidden-lg">
-          {% if logo %}
-            {% if home == og_url %}
-              <img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" />
-            {% else %}
-              <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
-            {% endif %}
-          {% else %}
-            <h1><a href="{{ home }}">{{ name }}</a></h1>
-          {% endif %}
-		</div>
-    </li>
-    <li><a href="{{ contact }}"><span class="hidden-xs">{{ address }}</span></a></li>
-	</ul>
-	</div>
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-        <li><a href="{{ contact }}"><i class="fa fa-map-marker hidden-lg hidden-sm visible-xs"></i> <span class="hidden">{{ address }}</span></a></li>
-        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle-o hidden-sm hidden-md hidden-lg"></i> <span class="hidden-xs">{{ text_account }}</span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            {% if logged %}
-            <li><a href="{{ account }}">{{ text_account }}</a></li>
-            <li><a href="{{ order }}">{{ text_order }}</a></li>
-            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-            <li><a href="{{ download }}">{{ text_download }}</a></li>
-            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
-            {% else %}
-            <li><a href="{{ register }}">{{ text_register }}</a></li>
-            <li><a href="{{ login }}">{{ text_login }}</a></li>
-            {% endif %}
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <header>
   <div class="container">
     <div class="row">
@@ -109,7 +68,7 @@
       </div>
         <div class="top-phone-open col-xs-8 col-sm-3 col-md-3 col-lg-3">
             <div class="top-phone"><a href="tel:{{ telephone }}"><i class="fa fa-phone"></i>{{ telephone }}</a></div>
-            <div class="top-open">с 80-00 до 21-00</div>
+            <div class="top-open">с 8-00 до 21-00</div>
             <div class="top-open"><a href="{{ contact }}">г. Отрадный, ул. Пионерская 10 (цветочный киоск)</a></div>
             <!-- <div class="top-links nav pull-left"><a href="http://flower.loc/index.php?route=information/contact"><span class="hidden-xs">г. Отрадный, ул. Пионерская 10 (цветочный киоск)</span></a></div> -->
         </div>
