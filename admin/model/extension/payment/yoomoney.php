@@ -1,6 +1,6 @@
 <?php
 
-require_once(DIR_APPLICATION . '../catalog/model/extension/payment/yoomoney/autoload.php');
+//require_once(DIR_APPLICATION . '../catalog/model/extension/payment/yoomoney/autoload.php');
 
 
 use YooKassa\Client;
