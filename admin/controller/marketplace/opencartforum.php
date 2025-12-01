@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('OPENCARTFORUM_SERVER')) {
+    define('OPENCARTFORUM_SERVER', 'https://opencartforum.com/');
+}
+
 class ControllerMarketplaceOpencartforum extends Controller {
 	public function index() {
 		$this->load->language('marketplace/opencartforum');
@@ -140,7 +145,7 @@ class ControllerMarketplaceOpencartforum extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api?' . $url);
+        $curl = curl_init('https://opencartforum.com/marketplace/api?' . $url);
 
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -158,7 +163,9 @@ class ControllerMarketplaceOpencartforum extends Controller {
 		$extension_total = strip_tags($response_info['extension_total']);
 
 		// Categories
-        $curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api/categories?' . $url);
+        //$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api/categories?' . $url);
+        $curl = curl_init('https://opencartforum.com/marketplace/api/categories?' . $url);
+
 
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -485,7 +492,8 @@ class ControllerMarketplaceOpencartforum extends Controller {
 		$url .= '&time=' . $time;
 		$url .= '&language=' . $this->language->get('code');
 
-		$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api/info?' . $url);
+		//$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api/info?' . $url);
+        $curl = curl_init('https://opencartforum.com/marketplace/api/info?' . $url);
 
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
