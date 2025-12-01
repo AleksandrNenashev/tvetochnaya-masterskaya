@@ -3,8 +3,8 @@ class ControllerMarketplacePromotion extends Controller {
 	public function index() {
 		$curl = curl_init();
 
-		curl_setopt($curl, CURLOPT_URL, OPENCARTFORUM_SERVER . 'marketplace/api/promotion?type=' . substr($this->request->get['route'], strrpos($this->request->get['route'], '/') + 1));
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_URL, 'https://opencartforum.com/' . 'marketplace/api/promotion?type=' . substr($this->request->get['route'], strrpos($this->request->get['route'], '/') + 1));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_HEADER, false);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
