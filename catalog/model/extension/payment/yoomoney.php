@@ -12,7 +12,7 @@ use YooMoneyModule\Model\KassaModel;
 use YooMoneyModule\Model\ApiClient;
 use YooMoneyModule\Model\KassaSecondReceiptModel;
 
-//require_once __DIR__.DIRECTORY_SEPARATOR.'yoomoney'.DIRECTORY_SEPARATOR.'autoload.php';
+require_once __DIR__.DIRECTORY_SEPARATOR.'yoomoney'.DIRECTORY_SEPARATOR.'autoload.php';
 
 /**
  * Class ModelExtensionPaymentYoomoney
