@@ -1,25 +1,25 @@
 function getURLVar(key) {
-	var value = [];
+    var value = [];
 
-	var query = String(document.location).split('?');
+    var query = String(document.location).split('?');
 
-	if (query[1]) {
-		var part = query[1].split('&');
+    if (query[1]) {
+        var part = query[1].split('&');
 
-		for (i = 0; i < part.length; i++) {
-			var data = part[i].split('=');
+        for (i = 0; i < part.length; i++) {
+            var data = part[i].split('=');
 
-			if (data[0] && data[1]) {
-				value[data[0]] = data[1];
-			}
-		}
+            if (data[0] && data[1]) {
+                value[data[0]] = data[1];
+            }
+        }
+    } else { // блок ЧПУ
+        var query = String(document.location.pathname).split('/');
+        if (query[query.length - 1] == 'cart') value['route'] = 'checkout/cart';
+        if (query[query.length - 1] == 'checkout') value['route'] = 'checkout/checkout';
+    }
 
-		if (value[key]) {
-			return value[key];
-		} else {
-			return '';
-		}
-	}
+    return value[key] ? value[key] : '';
 }
 
 $(document).ready(function() {
@@ -160,14 +160,34 @@ var cart = {
 					$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 					// Need to set timeout otherwise it wont update the total
-					setTimeout(function () {
-						$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-					}, 100);
+					// setTimeout(function () {
+					// 	$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+					// }, 100);
+                    setTimeout(function () {
+                        $('#cart > button').html(
+                            '<span id="cart-total">' +
+                            '<i class="fa fa-shopping-bag"></i>' +
+                            '<span class="cart-text">' + json["total"] + '</span>' +
+                            '<span class="cart-count-badge"></span>' +
+                            '</span>'
+                        );
 
-					$('html, body').animate({ scrollTop: 0 }, 'slow');
+                        if (typeof updateCartBadge === 'function') {
+                            updateCartBadge();
+                        }
+                    }, 100);
 
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
-				}
+
+                    $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+					//$('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li', function () {
+                        if (typeof updateCartBadge === 'function') {
+                            updateCartBadge();
+                        }
+                    });
+
+                }
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -188,15 +208,35 @@ var cart = {
 			},
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-				}, 100);
+				// setTimeout(function () {
+				// 	$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+				// }, 100);
+                setTimeout(function () {
+                    $('#cart > button').html(
+                        '<span id="cart-total">' +
+                        '<i class="fa fa-shopping-bag"></i>' +
+                        '<span class="cart-text">' + json["total"] + '</span>' +
+                        '<span class="cart-count-badge"></span>' +
+                        '</span>'
+                    );
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge();
+                    }
+                }, 100);
+
+
+                if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
-				}
+					//$('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li', function () {
+                        if (typeof updateCartBadge === 'function') {
+                            updateCartBadge();
+                        }
+                    });
+
+                }
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -217,15 +257,35 @@ var cart = {
 			},
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-				}, 100);
+				// setTimeout(function () {
+				// 	$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+				// }, 100);
+                setTimeout(function () {
+                    $('#cart > button').html(
+                        '<span id="cart-total">' +
+                        '<i class="fa fa-shopping-bag"></i>' +
+                        '<span class="cart-text">' + json["total"] + '</span>' +
+                        '<span class="cart-count-badge"></span>' +
+                        '</span>'
+                    );
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge();
+                    }
+                }, 100);
+
+
+                if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
-				}
+					//$('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li', function () {
+                        if (typeof updateCartBadge === 'function') {
+                            updateCartBadge();
+                        }
+                    });
+
+                }
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -252,15 +312,35 @@ var voucher = {
 			},
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-				}, 100);
+				// setTimeout(function () {
+				// 	$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+				// }, 100);
+                setTimeout(function () {
+                    $('#cart > button').html(
+                        '<span id="cart-total">' +
+                        '<i class="fa fa-shopping-bag"></i>' +
+                        '<span class="cart-text">' + json["total"] + '</span>' +
+                        '<span class="cart-count-badge"></span>' +
+                        '</span>'
+                    );
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+                    if (typeof updateCartBadge === 'function') {
+                        updateCartBadge();
+                    }
+                }, 100);
+
+
+                if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
 				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
-				}
+					//$('#cart > ul').load('index.php?route=common/cart/info ul li');
+                    $('#cart > ul').load('index.php?route=common/cart/info ul li', function () {
+                        if (typeof updateCartBadge === 'function') {
+                            updateCartBadge();
+                        }
+                    });
+
+                }
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
