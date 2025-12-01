@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 //require_once(DIR_APPLICATION . '../catalog/model/extension/payment/yoomoney/autoload.php');
 
 
